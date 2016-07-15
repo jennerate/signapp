@@ -1,0 +1,45 @@
+body {
+  height: 100vh;
+}
+
+.checkmark {
+  position: absolute;
+  right: 15px;
+  top: -30px;
+  font-size: 100px;
+  color: green;
+}
+
+.hidden {
+  display: none;
+}
+
+.submit-container {
+  float: right;
+  margin-top: 50px;
+  margin-right: 10px;
+}
+
+.websites-container {
+  margin-top: calc(100vh - 80vh);
+  width: 100%;
+}
+
+.website-holder {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  margin: 5px;
+  flex-wrap: wrap;
+  min-height: 305px;
+  cursor: pointer;
+  background-color: #00cc99;
+}
+
+.faded {
+  background-color: #FFF;
+  opacity: 0.2;
+}

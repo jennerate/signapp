@@ -26,6 +26,10 @@ get '/' do
   erb :index
 end
 
+get '/accounts' do
+  erb :'accounts/index'
+end
+
 post '/session' do
   @user = User.find_by(username: params[:username])
   if @user && @user.password == params[:password]
@@ -37,6 +41,11 @@ end
 get '/session/new' do
   @user = User.new
   erb :'session/new'
+end
+
+get '/session/delete' do
+  session.delete(:user)
+  redirect '/'
 end
 
 post '/user' do
