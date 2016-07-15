@@ -25,16 +25,76 @@ helpers do
 
   def github_signup(password)
     @driver.navigate.to "https://github.com/join"
-    element = @driver.find_element(:id, 'user_login')
-    element.send_keys("superman")
-    element = @driver.find_element(:id, 'user_email')
-    element.send_keys("Email input by user")
+    username_input = @driver.find_element(:id, 'user_login')
+    username_input.send_keys(@username)
+    email_input = @driver.find_element(:id, 'user_email')
+    email_input.send_keys(@email)
 
-    element = @driver.find_element(:id, 'user_password')
-    element.send_keys(password)
+    password_input = @driver.find_element(:id, 'user_password')
+    password_input.send_keys(password)
     sleep 2
     
-    @errors = @driver.find_elements(:css, 'dd.error')
+    errors = @driver.find_elements(:css, 'dd.error')
+    errors.each do |error|
+      @errors[:github] << error.text
+    end
+
+    password_input.submit
+  end
+
+  def codeschool_signup(password)
+    @driver.navigate.to "https://www.codeschool.com/users/sign_up"
+    email_input = @driver.find_element(:id, 'registration_email')
+    email_input.send_keys(@email)
+
+    username = @driver.find_element(:id, 'registration_username')
+    username.send_keys(@username)
+
+    password_input = @driver.find_element(:id, 'registration_password')
+    password_input.send_keys(password)
+
+    conditions_button = @driver.find_element(:id, 'registration_terms')
+    conditions_button.click
+
+    password_input.submit
+    sleep 2
+
+    errors = @driver.find_elements(:css, '.form-field .field_with_errors:first-child')
+    # errors = @driver.find_elements(:css, '.field_with_errors')
+    errors.each do |error|
+      @errors[:codeschool] << "#{error.text} has already been taken."
+    end
+  end
+
+
+  def codecademy_signup(password)
+    @driver.navigate.to "https://www.codecademy.com/register?redirect=https%3A%2F%2Fwww.codecademy.com%2F"
+    email_input = @driver.find_element(:id, 'user_email')
+    email_input.send_keys(@email)
+
+    username_input = @driver.find_element(:id, 'user_username')
+    username_input.click
+    sleep 1
+
+    error = @driver.find_elements(:css, "div.field-error")
+    if error.empty?
+    else
+      @errors[:codecademy] << error.first.text
+    end
+    username_input.send_keys(@username)
+
+    password_input = @driver.find_element(:id, 'user_password')
+    password_input.click
+    sleep 1
+
+    error = @driver.find_elements(:css, "div.field-error")
+    if error.empty?
+    else
+      @errors[:codecademy] << error.first.text
+    end
+
+    password_input.send_keys(password)
+    password_input.submit
   end
 end
 
@@ -49,12 +109,19 @@ end
 
 # Sign up to github, codeschool, codecademy
 get '/accounts/signup' do
-  github_password = random_pass_generator
-  codecademy_password = random_pass_generator
-  codeschool_password = random_pass_generator
+  @username = "SignAppTestDummy"
+  @email = "signappdummy@gmail.com"
+
+  @github_password = random_pass_generator
+  @codecademy_password = random_pass_generator
+  @codeschool_password = random_pass_generator
+  @errors = Hash.new { |h, k| h[k] = [] }
 
   @driver = Selenium::WebDriver.for :chrome
-  github_signup(github_password)
+  @github_status = github_signup(@github_password)
+  @codeschool_status = codeschool_signup(@codeschool_password)
+  @codecademy_status = codecademy_signup(@codecademy_password)
+
   erb :'accounts/response'
 end
 
@@ -86,7 +153,7 @@ post '/user' do
     name: params[:name],
     username: params[:username],
     email: params[:email]
-  
+  )
   @user.password = params[:password]
   @user.save!
   redirect '/'  
