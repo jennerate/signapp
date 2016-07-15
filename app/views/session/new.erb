@@ -1,0 +1,22 @@
+<% if @user.errors.any? %>
+  <div>
+    <% @user.errors.full_messages.each do |error_message| %>
+    <div class="bg-danger"><%= error_message %></div>
+    <% end %>
+  </div class="">
+<% end %>
+<form method="POST" action="/session">
+  <div>
+    <label>Username: </label>
+    <input type="text" name="username" value="<%= @user.username %>">
+  </div>
+
+  <div>
+    <label>Password: </label>
+    <input type="password" name="password">
+  </div>
+
+  <div>
+    <input type="submit" value="Sign me up!">
+  </div>
+</form>

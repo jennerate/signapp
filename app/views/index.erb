@@ -1,1 +1,18 @@
-<h1>Home Page</h1>
+<html>
+    <head>
+        <title>Image Upload</title>
+    </head>
+    <body>
+      <h1>Home Page</h1>
+        <% if logged_in? %>
+          <img src="assets/profile_pics/<%= current_user.photo %>" />
+          <p>Hello <%= current_user.name %></p>
+        <% end %>
+        <h1>Upload Image</h1>
+
+        <form action="/save_image" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" value="Upload image">
+        </form>
+    </body>
+</html>
