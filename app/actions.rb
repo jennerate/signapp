@@ -44,7 +44,7 @@ post '/user' do
     name: params[:name],
     username: params[:username],
     email: params[:email]
-  )
+  
   @user.password = params[:password]
   @user.save!
   redirect '/'  
@@ -58,4 +58,9 @@ end
 post '/save_image' do
   upload_file(params[:file])
   redirect '/'
+end
+
+get '/accounts' do
+  @accounts = Account.all
+  erb :'accounts/index'
 end
