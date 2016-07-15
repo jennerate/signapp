@@ -19,6 +19,9 @@ helpers do
     current_user.save!
   end
 
+  def random_pass_generator
+    random_string = SecureRandom.base64
+  end
 end
 
 # Homepage (Root path)
@@ -30,6 +33,32 @@ get '/accounts' do
   erb :'accounts/index'
 end
 
+# Sign up to github, codeschool, codecademy
+get '/accounts/signup' do
+  github_password = random_pass_generator
+  codecademy_password = random_pass_generator
+  codeschool_password = random_pass_generator
+
+  @driver = Selenium::WebDriver.for :chrome
+  @driver.navigate.to "https://github.com/join"
+  element = @driver.find_element(:id, 'user_login')
+  element.send_keys("superman")
+  element = @driver.find_element(:id, 'user_email')
+  element.send_keys("Email input by user")
+
+  element = @driver.find_element(:id, 'user_password')
+  element.send_keys(github_password)
+  sleep 2
+  
+  @errors = @driver.find_elements(:css, 'dd.error')
+  erb :'accounts/response'
+end
+
+post '/save_image' do
+  upload_file(params[:file])
+  redirect '/'
+end
+
 post '/session' do
   @user = User.find_by(username: params[:username])
   if @user && @user.password == params[:password]
@@ -38,14 +67,14 @@ post '/session' do
   redirect '/'
 end
 
-get '/session/new' do
-  @user = User.new
-  erb :'session/new'
-end
-
 get '/session/delete' do
   session.delete(:user)
   redirect '/'
+end
+
+get '/session/new' do
+  @user = User.new
+  erb :'session/new'
 end
 
 post '/user' do
@@ -62,9 +91,4 @@ end
 get '/user/new' do
   @user = User.new
   erb :'user/new'
-end
-
-post '/save_image' do
-  upload_file(params[:file])
-  redirect '/'
 end

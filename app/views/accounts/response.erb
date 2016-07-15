@@ -1,0 +1,6 @@
+<ul>
+<% @errors.each do |error| %>
+  <li><%= error.text %></li>
+<% end %>
+</ul>
+<% @driver.quit %>
