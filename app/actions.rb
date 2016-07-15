@@ -41,10 +41,10 @@ end
 
 post '/user' do
   @user = User.new(
-    name: params[:name],
+    name: params[:named],
     username: params[:username],
     email: params[:email]
-  
+  )
   @user.password = params[:password]
   @user.save!
   redirect '/'  
@@ -60,7 +60,10 @@ post '/save_image' do
   redirect '/'
 end
 
-get '/accounts' do
-  @accounts = Account.all
-  erb :'accounts/index'
+get '/downloads/new' do
+  erb :'downloads/new'
 end
+
+post '/session/profile' do
+  #TODO
+end 
