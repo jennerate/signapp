@@ -22,6 +22,20 @@ helpers do
   def random_pass_generator
     random_string = SecureRandom.base64
   end
+
+  def github_signup(password)
+    @driver.navigate.to "https://github.com/join"
+    element = @driver.find_element(:id, 'user_login')
+    element.send_keys("superman")
+    element = @driver.find_element(:id, 'user_email')
+    element.send_keys("Email input by user")
+
+    element = @driver.find_element(:id, 'user_password')
+    element.send_keys(password)
+    sleep 2
+    
+    @errors = @driver.find_elements(:css, 'dd.error')
+  end
 end
 
 # Homepage (Root path)
@@ -40,17 +54,7 @@ get '/accounts/signup' do
   codeschool_password = random_pass_generator
 
   @driver = Selenium::WebDriver.for :chrome
-  @driver.navigate.to "https://github.com/join"
-  element = @driver.find_element(:id, 'user_login')
-  element.send_keys("superman")
-  element = @driver.find_element(:id, 'user_email')
-  element.send_keys("Email input by user")
-
-  element = @driver.find_element(:id, 'user_password')
-  element.send_keys(github_password)
-  sleep 2
-  
-  @errors = @driver.find_elements(:css, 'dd.error')
+  github_signup(github_password)
   erb :'accounts/response'
 end
 
