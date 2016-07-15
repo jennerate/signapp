@@ -150,7 +150,7 @@ end
 
 post '/user' do
   @user = User.new(
-    name: params[:name],
+    name: params[:named],
     username: params[:username],
     email: params[:email]
   )
@@ -163,3 +163,16 @@ get '/user/new' do
   @user = User.new
   erb :'user/new'
 end
+
+post '/save_image' do
+  upload_file(params[:file])
+  redirect '/'
+end
+
+get '/downloads/new' do
+  erb :'downloads/new'
+end
+
+post '/session/profile' do
+  #TODO
+end 
