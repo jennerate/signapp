@@ -86,7 +86,7 @@ post '/user' do
     name: params[:name],
     username: params[:username],
     email: params[:email]
-  )
+  
   @user.password = params[:password]
   @user.save!
   redirect '/'  
