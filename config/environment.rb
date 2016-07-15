@@ -8,6 +8,8 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/contrib/all' # Requires cookies, among other things
 require 'bcrypt' # Requires BCrypt for storing passwords
+require 'securerandom' # Requires securerandom for random strings
+require 'selenium-webdriver' # Requires selenium for browser usage
 
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s

@@ -1,0 +1,37 @@
+<p>Github</p>
+<% if @errors[:github].empty? %>
+  <h1>Success!!</h1>
+  <p>Password: <%= @github_password %></p>
+<% else %>
+  <ul>
+  <% @errors[:github].each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<p>Codeschool</p>
+<% if @errors[:codeschool].empty? %>
+  <h1>Success!!</h1>
+  <p>Password: <%= @codeschool_password %></p>
+<% else %>
+  <ul>
+  <% @errors[:codeschool].each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<p>Codecademy</p>
+<% if @errors[:codecademy].empty? %>
+  <h1>Success!!</h1>
+  <p>Password: <%= @codecademy_password %></p>
+<% else %>
+  <ul>
+  <% @errors[:codecademy].each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<% @driver.quit %>

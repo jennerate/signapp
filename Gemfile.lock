@@ -19,7 +19,10 @@ GEM
     bcrypt (3.1.11)
     bond (0.5.1)
     builder (3.2.2)
+    childprocess (0.5.9)
+      ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
+    ffi (1.9.14)
     i18n (0.7.0)
     json (1.8.3)
     method_source (0.8.2)
@@ -45,6 +48,11 @@ GEM
       rack (>= 1.0)
       rack-test (~> 0.6.2)
       ripl (>= 0.7.0)
+    rubyzip (1.2.0)
+    selenium-webdriver (2.53.4)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
     shotgun (0.9.1)
       rack (>= 1.0)
     sinatra (1.4.6)
@@ -72,6 +80,7 @@ GEM
       sinatra (>= 1.2.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    websocket (1.2.3)
 
 PLATFORMS
   ruby
@@ -83,6 +92,7 @@ DEPENDENCIES
   pry
   puma
   rake
+  selenium-webdriver
   shotgun
   sinatra
   sinatra-activerecord
