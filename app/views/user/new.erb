@@ -1,0 +1,41 @@
+<% if @user.errors.any? %>
+  <div>
+    <% @user.errors.full_messages.each do |error_message| %>
+    <div class="bg-danger"><%= error_message %></div>
+    <% end %>
+  </div class="">
+<% elsif @missmatch %>
+  <div>
+    <strong>Your passwords did not match.</strong>
+  </div>
+<% end %>
+<form method="POST" action="/user">
+  <div>
+    <label>Full Name: </label>
+    <input type="text" name="name" value="<%= @user.name %>">
+  </div>
+
+  <div>
+    <label>Username: </label>
+    <input type="text" name="username" value="<%= @user.username %>">
+  </div>
+
+  <div>
+    <label>Email: </label>
+    <input type="text" name="email" value="<%= @user.email %>">
+  </div>
+
+  <div>
+    <label>Password: </label>
+    <input type="password" name="password">
+  </div>
+
+  <div>
+    <label>Confirm your password: </label>
+    <input type="password" name="password_confirm">
+  </div>
+
+  <div>
+    <input type="submit" value="Sign me up!">
+  </div>
+</form>
