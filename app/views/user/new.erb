@@ -8,14 +8,11 @@
     <% @user.errors.full_messages.each do |error_message| %>
     <div class="bg-danger"><%= error_message %></div>
     <% end %>
-  </div class="">
-<% elsif @missmatch %>
-  <div>
-    <strong>Your passwords did not match.</strong>
   </div>
 <% end %>
 
-<form action="/user" method="POST">
+
+<form action="/user/new" method="POST">
  <div class="group">
     <label>Name</label>
     <input type="text" name="name" value="<%= @user.name %>"><span class="highlight"></span><span class="bar"></span>
@@ -39,7 +36,6 @@
     <label>Describe yourself</label>
 
       <textarea id="Field4" name="Field4" spellcheck="true" rows="10" cols="55" tabindex="4"></textarea>
-
   </div>
 
   <div class="group">
@@ -51,7 +47,6 @@
     <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
   </button>
 </form>  
-
 
 <footer><a href="http://www.polymer-project.org/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a>
   <p>Be Productive <a href="/homepage" target="_blank">&copy;SignApp2016</a></p>

@@ -142,15 +142,20 @@ get '/session/new' do
   erb :'session/new'
 end
 
-post '/user' do
+post '/user/new' do
   @user = User.new(
     name: params[:name],
     username: params[:username],
     email: params[:email]
-  )
+  ) 
   @user.password = params[:password]
-  @user.save!
-  redirect '/'  
+  @user.save
+  if @user.errors.empty?
+    session[:flash] = "Thanks for registering!"
+    redirect '/'
+  else 
+    erb :'/user/new'
+  end
 end
 
 get '/user/new' do
