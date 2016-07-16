@@ -12,6 +12,8 @@ gem 'puma'
 gem 'tux'
 gem 'bcrypt'
 gem 'selenium-webdriver'
+gem 'rack-flash3'
+
 
 # These gems are only installed when run as `bundle install --without production`
 group :development, :test do
