@@ -1,7 +1,7 @@
 <h1>Storage History</h1>
 <% @users_storage.each do |storage| %>
   <%= storage.name %> <br>
-  <a href ="/assets/profile_pics/<%= storage.link_url %>">
+  <a href ="/assets/storage/<%= storage.link_url %>">
     <%= storage.link_url %>
   </a> <br>
 <% end %>

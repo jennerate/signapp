@@ -7,14 +7,14 @@ helpers do
     !current_user.nil?
   end
 
-  def upload_file(upload_file)
+  def upload_file(upload_file, file_type = 'profile_pic')
     @filename = params[:file][:filename]
     file = params[:file][:tempfile]
-
-    File.open("./public/assets/profile_pics/#{@filename}", 'wb') do |f|
+    file_path = './public/assets/storage/' if file_type == 'storage'
+    file_path = './public/assets/profile_pics/' if file_type == 'profile_pic'
+    File.open("#{file_path + @filename}", 'wb') do |f|
       f.write(file.read)
     end
-
     @filename 
   end
 
@@ -204,9 +204,9 @@ get '/user/new' do
 end
 
 post '/save_image' do
-  filename = upload_file(params[:file])
-    current_user.photo = filename
-    current_user.save!
+  filename = upload_file(params[:file], 'profile_pic')
+  current_user.photo = filename
+  current_user.save!
   redirect '/'
 end
 
@@ -219,7 +219,7 @@ post '/session/profile' do
 end 
 
 post '/save_information' do
-  filesname = upload_file(params[:file])
+  filesname = params[:file].nil? ? nil : upload_file(params[:file], 'storage')
   current_user.storages << Storage.new(name: params[:name], link_url: filesname) 
   redirect '/storage/all'
 end
