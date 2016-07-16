@@ -1,37 +1,49 @@
-<p>Github</p>
-<% if @errors[:github].empty? %>
-  <h1>Success!!</h1>
-  <p>Password: <%= @github_password %></p>
-<% else %>
-  <ul>
-  <% @errors[:github].each do |error| %>
-    <li><%= error %></li>
+<% if @github_status %>
+  <p>Github</p>
+  <% if @errors[:github].empty? %>
+    <h1>Success!!</h1>
+    <p>Password: <%= @github_password %></p>
+  <% else %>
+    <ul>
+    <% @errors[:github].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
   <% end %>
-  </ul>
+<% else %>
+  <p>Didn't sign up for Github</p>
 <% end %>
 
-<p>Codeschool</p>
-<% if @errors[:codeschool].empty? %>
-  <h1>Success!!</h1>
-  <p>Password: <%= @codeschool_password %></p>
-<% else %>
-  <ul>
-  <% @errors[:codeschool].each do |error| %>
-    <li><%= error %></li>
+<% if @codeschool_status %>
+  <p>Codeschool</p>
+  <% if @errors[:codeschool].empty? %>
+    <h1>Success!!</h1>
+    <p>Password: <%= @codeschool_password %></p>
+  <% else %>
+    <ul>
+    <% @errors[:codeschool].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
   <% end %>
-  </ul>
+<% else %>
+<p>Didn't sign up for Codeschool</p>
 <% end %>
 
-<p>Codecademy</p>
-<% if @errors[:codecademy].empty? %>
-  <h1>Success!!</h1>
-  <p>Password: <%= @codecademy_password %></p>
-<% else %>
-  <ul>
-  <% @errors[:codecademy].each do |error| %>
-    <li><%= error %></li>
+<% if @codecademy_status %>
+  <p>Codecademy</p>
+  <% if @errors[:codecademy].empty? %>
+    <h1>Success!!</h1>
+    <p>Password: <%= @codecademy_password %></p>
+  <% else %>
+    <ul>
+    <% @errors[:codecademy].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
   <% end %>
-  </ul>
+<% else %>
+<p>Didn't sign up for Codecademy</p>
 <% end %>
 
 <% @driver.quit %>
