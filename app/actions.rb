@@ -1,4 +1,7 @@
 helpers do
+  PATH_TO_PROFILE_PICS = './public/assets/profile_pics/'
+  PATH_TO_STORAGE = './public/assets/storage/'
+
   def current_user
     @current_user ||= User.find_by(id: session[:user])
   end
@@ -8,10 +11,11 @@ helpers do
   end
 
   def upload_file(upload_file, file_type = 'profile_pic')
-    @filename = params[:file][:filename]
+    @filename = Time.now.to_i.to_s + "_" + params[:file][:filename].parameterize
     file = params[:file][:tempfile]
-    file_path = './public/assets/storage/' if file_type == 'storage'
-    file_path = './public/assets/profile_pics/' if file_type == 'profile_pic'
+
+    file_path = file_type == 'profile_pic' ? PATH_TO_PROFILE_PICS : PATH_TO_STORAGE
+
     File.open("#{file_path + @filename}", 'wb') do |f|
       f.write(file.read)
     end
@@ -66,7 +70,6 @@ helpers do
     end
     true
   end
-
 
   def codecademy_signup(password)
     @driver.navigate.to "https://www.codecademy.com/register?redirect=https%3A%2F%2Fwww.codecademy.com%2F"
@@ -219,8 +222,12 @@ post '/session/profile' do
 end 
 
 post '/save_information' do
-  filesname = params[:file].nil? ? nil : upload_file(params[:file], 'storage')
-  current_user.storages << Storage.new(name: params[:name], link_url: filesname) 
+  filename = params[:file].nil? ? nil : upload_file(params[:file], 'storage')
+  if filename 
+    current_user.storages << Storage.new(name: params[:name], link_url: filename) 
+  else
+    current_user.storages << Storage.new(name: params[:name], link_url: params[:link], bookmark: true)
+  end
   redirect '/storage/all'
 end
 
