@@ -1,3 +1,9 @@
+
+<hgroup>
+  <h1>Create Account</h1>
+</hgroup>
+
+
 <% if @user.errors.any? %>
   <div>
     <% @user.errors.full_messages.each do |error_message| %>
@@ -9,33 +15,46 @@
     <strong>Your passwords did not match.</strong>
   </div>
 <% end %>
-<form method="POST" action="/user">
-  <div>
-    <label>Full Name: </label>
-    <input type="text" name="name" value="<%= @user.name %>">
+
+<form>
+ <div class="group">
+    <label>Name</label>
+    <input type="text" name="name" value="<%= @user.name %>"><span class="highlight"></span><span class="bar"></span>
   </div>
 
-  <div>
-    <label>Username: </label>
-    <input type="text" name="username" value="<%= @user.username %>">
+  <div class="group">
+    <input type="text" name="username" value="<%= @user.name %>"><span class="highlight"></span><span class="bar"></span>
+    <label>Username</label> 
   </div>
 
-  <div>
-    <label>Email: </label>
-    <input type="text" name="email" value="<%= @user.email %>">
+  <div class="group">
+    <input type="text" name="password" value="<%= @user.password_hash %>"><span class="highlight"></span><span class="bar"></span>
+    <label>Password</label>
+  </div>
+  <div class="group">
+    <input type="email" name="email" value="<%= @user.email %>"><span class="highlight"></span><span class="bar"></span>
+    <label>Email</label>
   </div>
 
-  <div>
-    <label>Password: </label>
-    <input type="password" name="password">
+  <div class="group">
+    <label>Describe yourself</label>
+
+      <textarea id="Field4" name="Field4" spellcheck="true" rows="10" cols="55" tabindex="4"></textarea>
+
   </div>
 
-  <div>
-    <label>Confirm your password: </label>
-    <input type="password" name="password_confirm">
+  <div class="group">
+    <input type="file" onchange="previewFile()"><br>
+    <img src="" height="100">
   </div>
 
-  <div>
-    <input type="submit" value="Sign me up!">
-  </div>
+  <button type="button" class="button buttonBlue">Sign Up
+    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+  </button>
+</form>  
+
+
+<footer><a href="http://www.polymer-project.org/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a>
+  <p>Be Productive <a href="/homepage" target="_blank">&copy;SignApp2016</a></p>
+</footer> 
 </form>
