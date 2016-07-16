@@ -1,28 +1,39 @@
 <div class="container body-container">
-  <div class="row websites-container">
-    <div class="col-xs-4">
-      <div class="website-holder">
-        <div class="checkmark"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
-        <img class="img-responsive center-block signup-logo" src="/assets/images/GitHub-Mark.png" />
-        <img class="img-responsive center-block" src="/assets/images/GitHub_Logo.png" />
+  <form method="POST" action="/accounts/signup">
+    <div class="row websites-container">
+      <div class="col-xs-4">
+        <div class="website-holder">
+          <div class="checkmark"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+          <img class="img-responsive center-block signup-logo" src="/assets/images/GitHub-Mark.png" />
+          <img class="img-responsive center-block" src="/assets/images/GitHub_Logo.png" />
+          <input type="hidden" id="github-signup-indicator" name="github" value="true" />
+        </div>
+        <div id="github-status">
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="website-holder">
+          <div class="checkmark"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+          <img class="img-responsive center-block signup-logo" src="/assets/images/codeschool_logo.png" />
+          <input type="hidden" id="codeschool-signup-indicator" name="codeschool" value="true" />
+        </div>
+        <div id="codeschool-status">
+        </div>
+      </div>
+       <div class="col-xs-4">
+        <div class="website-holder">
+          <div class="checkmark"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+          <img class="img-responsive center-block signup-logo" src="/assets/images/codecademy_logo.png" />
+          <input type="hidden" id="codecademy-signup-indicator" name="codecademy" value="true" />
+        </div>
+        <div id="codecademy-status">
+        </div>
       </div>
     </div>
-    <div class="col-xs-4">
-      <div class="website-holder">
-        <div class="checkmark"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
-        <img class="img-responsive center-block signup-logo" src="/assets/images/codeschool_logo.png" />
+    <div class="row" id="submit-container">
+      <div class="col-xs-12">
+        <button class="btn btn-default mass-signup-submit">Submit</button>
       </div>
     </div>
-     <div class="col-xs-4">
-      <div class="website-holder">
-        <div class="checkmark"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
-        <img class="img-responsive center-block signup-logo" src="/assets/images/codecademy_logo.png" />
-      </div>
-    </div>
-  </div>
-  <div class="row submit-container">
-    <div class="col-xs-12">
-      <button class="btn btn-default">Submit</button>
-    </div>
-  </div>
+  </form>
 </div>

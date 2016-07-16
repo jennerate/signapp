@@ -36,10 +36,11 @@ helpers do
     
     errors = @driver.find_elements(:css, 'dd.error')
     errors.each do |error|
-      @errors[:github] << error.text
+      @errors << error.text
     end
 
     password_input.submit
+    true
   end
 
   def codeschool_signup(password)
@@ -62,8 +63,9 @@ helpers do
     errors = @driver.find_elements(:css, '.form-field .field_with_errors:first-child')
     # errors = @driver.find_elements(:css, '.field_with_errors')
     errors.each do |error|
-      @errors[:codeschool] << "#{error.text} has already been taken."
+      @errors << "#{error.text} has already been taken."
     end
+    true
   end
 
 
@@ -79,7 +81,7 @@ helpers do
     error = @driver.find_elements(:css, "div.field-error")
     if error.empty?
     else
-      @errors[:codecademy] << error.first.text
+      @errors << error.first.text
     end
     username_input.send_keys(@username)
 
@@ -90,11 +92,12 @@ helpers do
     error = @driver.find_elements(:css, "div.field-error")
     if error.empty?
     else
-      @errors[:codecademy] << error.first.text
+      @errors << error.first.text
     end
 
     password_input.send_keys(password)
     password_input.submit
+    true
   end
 end
 
@@ -108,7 +111,7 @@ get '/accounts' do
 end
 
 # Sign up to github, codeschool, codecademy
-get '/accounts/signup' do
+post '/accounts/signup' do
   @username = "SignAppTestDummy"
   @email = "signappdummy@gmail.com"
 
@@ -118,11 +121,53 @@ get '/accounts/signup' do
   @errors = Hash.new { |h, k| h[k] = [] }
 
   @driver = Selenium::WebDriver.for :chrome
-  @github_status = github_signup(@github_password)
-  @codeschool_status = codeschool_signup(@codeschool_password)
-  @codecademy_status = codecademy_signup(@codecademy_password)
+  # @github_status = github_signup(@github_password) if params[:github] == 'true'
+  # @codeschool_status = codeschool_signup(@codeschool_password) if params[:codeschool] == 'true'
+  # @codecademy_status = codecademy_signup(@codecademy_password) if params[:codecademy] == 'true'
+  @github_status = params[:github] == 'true' ? github_signup(@github_password) : false
+  @codeschool_status = params[:codeschool] == 'true' ? codeschool_signup(@codeschool_password) : false
+  @codecademy_status = params[:codecademy] == 'true' ? codecademy_signup(@codecademy_password) : false
 
   erb :'accounts/response'
+end
+
+get '/accounts/github/new' do
+  @username = "SignAppTestDummy54321"
+  @email = "signappdummy54321@gmail.com"
+  @github_password = random_pass_generator
+  @errors = Array.new
+
+  @driver = Selenium::WebDriver.for :chrome
+  @github_status = github_signup(@github_password)
+  @driver.quit
+  content_type :json
+  {github_status: @github_status, github_password: @github_password, errors: @errors}.to_json
+end
+
+get '/accounts/codeschool/new' do
+  @username = "SignAppTestDummy54321"
+  @email = "signappdummy54321@gmail.com"
+  @codeschool_password = random_pass_generator
+  @errors = Array.new
+
+  @driver = Selenium::WebDriver.for :chrome
+  @codeschool_status = codeschool_signup(@codeschool_password)
+  @driver.quit
+  content_type :json
+  {codeschool_status: @codeschool_status, codeschool_password: @codeschool_password, errors: @errors}.to_json
+end
+
+get '/accounts/codecademy/new' do
+  @username = "SignAppTestDummy54321"
+  @email = "signappdummy54321@gmail.com"
+  @codecademy_password = random_pass_generator
+  @errors = Array.new
+
+  @driver = Selenium::WebDriver.for :chrome
+  @codecademy_status = codecademy_signup(@codecademy_password)
+  @driver.quit
+  content_type :json
+  {codecademy_status: @codecademy_status, codecademy_password: @codecademy_password, errors: @errors}.to_json
 end
 
 post '/save_image' do
