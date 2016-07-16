@@ -1,15 +1,15 @@
 <hgroup>
-  <h1>Create Account</h1>
+  <span id="signup-form-header">Create Account</span>
 </hgroup>
 
-
+<!-- 
 <% if @user.errors.any? %>
   <div>
     <% @user.errors.full_messages.each do |error_message| %>
     <div class="bg-danger"><%= error_message %></div>
     <% end %>
   </div>
-<% end %>
+<% end %> -->
 
 <form action="/user" method="POST" class="signup-form">
  <div class="group">
@@ -47,7 +47,10 @@
   </button>
 </form>  
 
-<footer><a href="http://www.polymer-project.org/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a>
+
+
+<footer><a href="/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a>
+
   <p>Be Productive <a href="/homepage" target="_blank">&copy;SignApp2016</a></p>
 </footer> 
 </form>
