@@ -10,8 +10,8 @@ helpers do
     !current_user.nil?
   end
 
-  def upload_file(upload_file, file_type = 'profile_pic')
-    @filename = Time.now.to_i.to_s + "_" + params[:file][:filename].parameterize
+    def upload_file(upload_file, file_type = 'profile_pic')
+    @filename = Time.now.to_i.to_s + "_" + params[:file][:filename].gsub(/\s+/, '-')
     file = params[:file][:tempfile]
 
     file_path = file_type == 'profile_pic' ? PATH_TO_PROFILE_PICS : PATH_TO_STORAGE
