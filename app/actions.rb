@@ -15,8 +15,7 @@ helpers do
       f.write(file.read)
     end
 
-    current_user.photo = @filename
-    current_user.save!
+    @filename 
   end
 
   def random_pass_generator
@@ -125,11 +124,6 @@ get '/accounts/signup' do
   erb :'accounts/response'
 end
 
-post '/save_image' do
-  upload_file(params[:file])
-  redirect '/'
-end
-
 post '/session' do
   @user = User.find_by(username: params[:username])
   if @user && @user.password == params[:password]
@@ -150,7 +144,7 @@ end
 
 post '/user' do
   @user = User.new(
-    name: params[:named],
+    name: params[:name],
     username: params[:username],
     email: params[:email]
   )
@@ -165,7 +159,9 @@ get '/user/new' do
 end
 
 post '/save_image' do
-  upload_file(params[:file])
+  filename = upload_file(params[:file])
+    current_user.photo = filename
+    current_user.save!
   redirect '/'
 end
 
@@ -176,3 +172,19 @@ end
 post '/session/profile' do
   #TODO
 end 
+
+post '/save_information' do
+  filesname = upload_file(params[:file])
+  current_user.storages << Storage.new(name: params[:name], link_url: filesname) 
+  redirect '/storage/all'
+end
+
+get '/storage' do
+  erb :'storage/storage'
+end
+
+get '/storage/all' do
+  @users_storage = current_user.storages.all
+  erb :'storage/all'
+end
+

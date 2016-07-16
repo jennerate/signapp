@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>File Upload</title>
+  </head>
+  <body>
+    <h1>Storage</h1>
+    <form action="/save_information" method="POST" enctype="multipart/form-data">
+      <textarea rows="1" cols="30" name="name" placeholder="Name of file"></textarea>
+        <br>
+      <textarea rows="3" cols="30" placeholder="Link"></textarea>
+      <input type="file" name="file">
+      <input type="submit" value="Upload file">
+    </form>
+  </body>
+</html>
