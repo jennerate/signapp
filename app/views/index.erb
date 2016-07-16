@@ -1,18 +1,29 @@
 <html>
-    <head>
-        <title>Image Upload</title>
-    </head>
-    <body>
-      <h1>Home Page</h1>
-        <% if logged_in? %>
-          <img src="assets/profile_pics/<%= current_user.photo %>" />
-          <p>Hello <%= current_user.name %></p>
-        <% end %>
-        <h1>Upload Image</h1>
+<head>
+<title>Home page</title>
+</head>
+<body>
+    <div class="home">
+    <div class="home-wrapper js-home-desktop-wrapper">
+    <section class="side-left js-side-left">
+    <div class="side-left-wrapper">
+    <div class="side-left-image js-side-left-image"></div>
+    </div>
+    </section>
 
-        <form action="/save_image" method="POST" enctype="multipart/form-data">
-            <input type="file" name="file">
-            <input type="submit" value="Upload image">
-        </form>
-    </body>
+    <section class="side-right">
+    <div class="side-right-image js-side-right-image"></div>    
+    </section>
+    </div>
+
+    <aside class="signature">
+    <footer>
+    <p><a href="http://www.polymer-project.org/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a></p>
+    <p>
+    <a href="/homepage" target="_blank">&copy;SignApp2016</a>
+    </p>
+    </footer> 
+    </aside>
+    </div>
+</body>
 </html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
@@ -20,15 +21,17 @@
   <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+
   <script src="/javascript/application.js"></script>
   <script src="/javascript/signup.js"></script>
+  <script src="/javascript/homepage.js"></script>
   <link rel="stylesheet" href="/stylesheets/styles.css"/>
-  
+  <link rel="stylesheet" href="/stylesheets/homepage.css"/>
 
   <title></title>
 </head>
 <body>
-   
+    <%= erb :_menu %>   
     <%= yield %>
 </body>
 </html>
