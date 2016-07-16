@@ -169,8 +169,8 @@ get '/downloads/new' do
   erb :'downloads/new'
 end
 
-post '/session/profile' do
-  #TODO
+get '/user/profile' do
+  erb :'user/profile'
 end 
 
 post '/save_information' do
