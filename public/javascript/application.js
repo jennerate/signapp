@@ -375,4 +375,27 @@ $(document).ready(function() {
     });
   });
 
+  $(document).on('click', '#addModal-submit', function() {
+    event.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: 'http://localhost:3000/save_information',
+      data: $('#addModal form').serialize(),
+      success: function(data) {
+        location.reload();
+      }
+    });
+  });
+
+  $(document).on('submit', '#addModal form', function() {
+    event.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: 'http://localhost:3000/save_information',
+      data: $('#addModal form').serialize(),
+      success: function(data) {
+        location.reload();
+      }
+    });
+
 });

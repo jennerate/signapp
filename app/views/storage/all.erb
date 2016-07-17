@@ -1,28 +1,53 @@
 <div class="container">
   <h1>Personal Storage</h1>
-<!-- Modal -->
-<div class="modal fade" id="renameModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <form>
-          <input id="file_id" type="hidden" name="file_id" value="">
-          <input id="file_name" type="text" name="name" value="">
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="renameModal-submit" type="button" class="btn btn-primary">Save changes</button>
+  <!-- Rename Modal -->
+  <div class="modal fade" id="renameModal" tabindex="-1" role="dialog" aria-labelledby="Rename dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="renameModalLabel">Rename a file</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <input id="file_id" type="hidden" name="file_id" value="">
+            <input id="file_name" type="text" name="name" value="">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id="renameModal-submit" type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- Add Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="Add dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="addModalLabel">Add a file</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <input type="text" name="name" placeholder="Name of file">
+            <input type="text" name="link" placeholder="Link">
+            <input type="file" name="file">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id="addModal-submit" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <% unless @users_storage.where(bookmark: true).empty? %>
   <div class="table-responsive">
+    <a class="storage-add-link" data-toggle="modal" data-target="#addModal"><span class="glyphicon glyphicon-plus" title="Add" aria-hidden="true"></span></a>
     <table class="table table-hover storage-files bookmarks">
       <thead>
         <tr>
