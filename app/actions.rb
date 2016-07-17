@@ -190,11 +190,13 @@ get '/session/new' do
   erb :'session/new'
 end
 
-post '/user/new' do
+post '/user' do
   @user = User.new(
     name: params[:name],
     username: params[:username],
-    email: params[:email]
+    email: params[:email],
+    photo: params[:photo],
+    description: params[:description]
   ) 
   @user.password = params[:password]
   @user.save

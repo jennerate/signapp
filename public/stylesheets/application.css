@@ -50,7 +50,15 @@ body {
   background-color: #00a8a4;
 }
 
+.downloads-holder {
+  min-height: 400px;
+}
+
 .website-status-form {
   margin-top: 20px;
   position: relative;
+}
+
+.over {
+  float: right;
 }
