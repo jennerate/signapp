@@ -280,11 +280,11 @@ footer img:focus , footer a:focus { outline: none; }
 
 .img-thumbnail {
   border: 6px solid #000;
-  border: 80%;
+  /*border: 80%;*/
   margin-right: 10cm;
-  width: 700px;
-  height: 400px;
-  padding: 100px;
+  /*width: 700px;
+  height: 400px;*/
+  /*padding: 100px;*/
 }
 
 .nav-list {

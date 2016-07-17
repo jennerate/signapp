@@ -197,7 +197,7 @@ $(document).ready(function() {
         console.log(data)
         if (data.errors.length == 0) {
           $('#codecademy-status').html('<h1>Success!</h1>');
-          $('#codeacademy-status').append('<div id="codecademy-email-used"></div>');
+          $('#codecademy-status').append('<div id="codecademy-email-used"></div>');
           $('#codecademy-email-used').append('<h3>Email</h3><p>' + data.codecademy_email + '</p>');
           $('#codecademy-status').append('<div id="codecademy-username-used"></div>');
           $('#codecademy-username-used').append('<h3>Username</h3><p>' + data.codecademy_username + '</p>');

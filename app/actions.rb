@@ -208,7 +208,8 @@ post '/user' do
   @user.save
   if @user.errors.empty?
     session[:flash] = "Welcome!"
-    redirect '/'
+    session[:user] = @user.id
+    redirect '/accounts'
   else 
     erb :'/user/new'
   end

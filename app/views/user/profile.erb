@@ -2,7 +2,7 @@
   <div>
   <h1>Profile</h1>
   </div>
-  <img src="/assets/profile_pics/<%= current_user.photo %>" alt="" class="img-thumbnail"/>
+  <img src="/assets/profile_pics/<%= current_user.photo.nil? || current_user.photo.empty? ? "default_profile.png" : current_user.photo %>" alt="" class="img-responsive img-thumbnail"/>
   <div>
   <h1>Name: <%= current_user.name %></h1>
   <h3>Username: <%= current_user.username %></h3>

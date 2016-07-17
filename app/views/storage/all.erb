@@ -46,7 +46,6 @@
     </div>
   </div>
 
-  <% unless @users_storage.where(bookmark: true).empty? %>
   <div class="table-responsive">
     <div class="row storage-table-header">
       <div class="col-xs-10">
@@ -56,6 +55,7 @@
         <button type="button" class="storage-add-link" data-toggle="modal" data-target="#addModal">Add a Storage Item <span class="glyphicon glyphicon-plus" title="Add" aria-hidden="true"></span></button>
       </div>
     </div>
+  <% unless @users_storage.where(bookmark: true).empty? %>
     <table class="table table-hover storage-files bookmarks">
       <thead>
         <tr>
@@ -79,10 +79,9 @@
       </tbody>
       <% end %>
     </table>
-  </div>
   <% end %>
+  </div>
 
-  <% unless @users_storage.where(bookmark: false).empty? %>
   <div class="table-responsive">
     <div class="row storage-table-header">
       <div class="col-xs-10">
@@ -92,6 +91,7 @@
         <button type="button" class="storage-add-link" data-toggle="modal" data-target="#addModal">Add a Storage Item <span class="glyphicon glyphicon-plus" title="Add" aria-hidden="true"></span></button>
       </div>
     </div>
+  <% unless @users_storage.where(bookmark: false).empty? %>
     <table class="table table-hover storage-files files">
       <thead>
         <tr>
@@ -115,6 +115,6 @@
       </tbody>
       <% end %>
     </table>
-  </div>
   <% end %>
+  </div>
 </div>
