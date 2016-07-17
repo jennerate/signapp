@@ -261,8 +261,11 @@ footer img:hover { opacity: .83; }
 footer img:focus , footer a:focus { outline: none; }
 
 .form-login {
-  padding-top: 5em;
-  background: #ffffff !important;
+  padding-top: 10em;
+ /* background: #ffffff !important;*/
+  margin-left: 40em;
+  margin-right: 40em;
+
 
 }
 
@@ -280,6 +283,10 @@ footer img:focus , footer a:focus { outline: none; }
   width: 700px;
   height: 400px;
   padding: 100px;
+}
+
+.nav-list {
+  text-decoration: none;
 }
 
 
