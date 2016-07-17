@@ -84,3 +84,15 @@ body {
 .over {
   float: right;
 }
+
+.alert-fixed {
+  position:absolute; 
+  margin-top:50px;
+  top: 0px; 
+  left: 0px; 
+  width: 100%;
+  z-index:9999; 
+  border-radius:0px
+}
+
+.alert { padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; }
