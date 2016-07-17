@@ -18,13 +18,18 @@ hgroup {
   color: #636363;
 }
 
-h1, h3 { font-weight: 300; }
 
-h1 { color: #636363; }
 
-h3 { color: #4a89dc; }
+h1 { 
+  font-weight: 500;
+  color: #000; }
 
-form.signup-form {
+h3 { 
+  font-weight: 200;
+  color: #000; }
+
+
+.signup-form {
 
     width: 500px;
     /*margin: 4em auto;*/
@@ -254,5 +259,27 @@ footer img {
 footer img:hover { opacity: .83; }
 
 footer img:focus , footer a:focus { outline: none; }
+
+.form-login {
+  padding-top: 5em;
+  background: #ffffff !important;
+
+}
+
+.profile-page {
+  padding-top: 3em;
+/*  background: #ffffff;*/
+  margin-left: 5em;
+
+}
+
+.img-thumbnail {
+  border: 6px solid #000;
+  border: 80%;
+  margin-right: 10cm;
+  width: 700px;
+  height: 400px;
+  padding: 100px;
+}
 
 

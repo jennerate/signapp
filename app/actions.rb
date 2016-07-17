@@ -190,13 +190,16 @@ get '/session/new' do
   erb :'session/new'
 end
 
-post '/user/new' do
+post '/user' do
   @user = User.new(
     name: params[:name],
     username: params[:username],
-    email: params[:email]
+    email: params[:email],
+    description: params[:description]
   ) 
   @user.password = params[:password]
+  filename = upload_file(params[:file], 'profile_pic')
+  @user.photo = filename
   @user.save
   if @user.errors.empty?
     session[:flash] = "Thanks for registering!"
