@@ -235,8 +235,8 @@ input:focus ~ .highlight {
 footer { text-align: center; }
 
 footer p {
-    color: #888;
-    font-size: 13px;
+    color: #ffffff;
+    font-size: 40px;
     letter-spacing: .4px;
 }
 
@@ -244,6 +244,8 @@ footer a {
     color: #4a89dc;
     text-decoration: none;
     transition: all .2s ease;
+    font-size: small;
+    float: right;
 }
 
 footer a:hover {
@@ -252,7 +254,7 @@ footer a:hover {
 }
 
 footer img {
-    width: 80px;
+    width: 50px;
     transition: all .2s ease;
 }
 
