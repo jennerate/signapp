@@ -1,4 +1,16 @@
-<% if session[:flash] %>
-  <div class="alert-fixed" role="alert"><%= session[:flash] %></div>
-  <% session.delete(:flash) %>
-<% end %>
+<div class="outer-div">
+    <% if logged_in? && session[:flash] == "Welcome back #{current_user.name}!" %>
+      <div class="alert inner-div alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <%= session[:flash] %>
+      </div>
+      <% session.delete(:flash) %>
+    <% elsif session[:flash] %> 
+      <div class="alert inner-div alert-warning">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <%= session[:flash] %>
+      </div>
+      <% session.delete(:flash) %>
+    <% end %>
+  </div>
+</div>

@@ -176,12 +176,19 @@ end
 post '/session' do
   @user = User.find_by(username: params[:username])
   if @user && @user.password == params[:password]
-    session[:flash] = "Welcome back #{@user.name}"
+    session[:flash] = "Welcome back #{@user.name}!"
     session[:user] = @user.id
     redirect '/'
-  else 
-    session[:flash] = "Hmm, looks like you have an error. Try again!"
-    redirect '/session/new'
+  elsif
+    @user = User.find_by(username: params[:username])
+    if @user && @user.password != params[:password]
+      session[:flash] = "Incorrect password! Try again."
+      session[:user] = @user.id
+      redirect '/session/new'
+    end
+  else
+    session[:flash] = "Hmm, that doesn't look right. Try again!"
+     redirect '/session/new'
   end
 end
 
