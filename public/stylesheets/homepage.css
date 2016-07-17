@@ -74,6 +74,9 @@ div#navigation {
   background-color: #ffffff;
   border: 1px solid #ffffff;
   padding: 5px;
+}
+
+#navigation a {
   text-decoration: none;
 }
 
