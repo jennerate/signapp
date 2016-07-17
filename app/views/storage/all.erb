@@ -1,12 +1,12 @@
 <div class="container">
   <h1>Personal Storage</h1>
 <!-- Modal -->
-<div class="modal fade" id="renameModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="renameModal" tabindex="-1" role="dialog" aria-labelledby="renameModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="renameModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
         <form>
@@ -17,12 +17,44 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button id="renameModal-submit" type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Add Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="addModalLabel">Add a file</h4>
+        </div>
+        <div class="modal-body">
+          <form action="/save_information" method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Name of file">
+            <input type="text" name="link" placeholder="Link">
+            <input type="file" name="file">
+            <input class="hidden" type="submit" value="Upload file">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id="addModal-submit" type="button" class="btn btn-primary">Add Storage Item</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
   <% unless @users_storage.where(bookmark: true).empty? %>
   <div class="table-responsive">
+    <div class="row storage-table-header">
+      <div class="col-xs-10">
+        <h2>Bookmarks</h2>
+      </div>
+      <div class="col-xs-2">
+        <button type="button" class="storage-add-link" data-toggle="modal" data-target="#addModal">Add a Storage Item <span class="glyphicon glyphicon-plus" title="Add" aria-hidden="true"></span></button>
+      </div>
+    </div>
     <table class="table table-hover storage-files bookmarks">
       <thead>
         <tr>
@@ -32,12 +64,12 @@
           <th class="hidden-xs col-md-1">Actions</th>
         </tr>
       </thead>
-      <% @users_storage.where(bookmark: true).each do |storage| %>
+      <% @users_storage.where(bookmark: true).order(created_at: :desc).each do |storage| %>
       <tbody>
         <tr class="file-rows" data-href="<% unless storage.bookmark %>/assets/storage/<% end %><%= storage.link_url %>">
           <td><%= storage.name %></td>
           <td><%= storage.link_url %></td>
-          <td><%= storage.created_at %></td>
+          <td><%= storage.created_at.strftime("%a %b %e, %Y - %l:%M %p") %></td>
           <td class="file-actions">
             <a class="storage-rename-link" data-toggle="modal" data-target="#renameModal" data-id="<%= storage.id %>" data-name="<%= storage.name %>"><span class="glyphicon glyphicon-pencil" title="Rename" aria-hidden="true"></span></a>
             <a href="/storage/delete/<%= storage.id %>"><span class="glyphicon glyphicon-trash" title="Delete" aria-hidden="true"></span></a>
@@ -47,42 +79,41 @@
       <% end %>
     </table>
   </div>
-  <div class="col-md-12 text-center">
-    <ul class="pagination pagination-lg pager" id="myPager"></ul>
-  </div>
   <% end %>
 
   <% unless @users_storage.where(bookmark: false).empty? %>
-  <table class="table table-hover storage-files files">
-    <thead>
-      <tr>
-        <th class="col-xs-12 col-md-3">Name</th>
-        <th class="hidden-xs col-md-6">Filename</th>
-        <th class="hidden-xs col-md-3">Date Created</th>
-        <th class="hidden-xs col-md-1">Actions</th>
-      </tr>
-    </thead>
-    <% @users_storage.where(bookmark: false).each do |storage| %>
-    <tbody>
-      <tr class="file-rows" data-href="<% unless storage.bookmark %>/assets/storage/<% end %><%= storage.link_url %>">
-        <td><%= storage.name %></td>
-        <td><%= storage.link_url %></td>
-        <td><%= storage.created_at %></td>
-        <td class="file-actions">
-          <a class="storage-rename-link" data-toggle="modal" data-target="#renameModal" data-id="<%= storage.id %>" data-name="<%= storage.name %>"><span class="glyphicon glyphicon-pencil" title="Rename" aria-hidden="true"></span></a>
-          <a href="/storage/delete/<%= storage.id %>"><span class="glyphicon glyphicon-trash" title="Delete" aria-hidden="true"></span></a>
-        </td>
-      </tr>
-    </tbody>
-    <% end %>
-  </table>
+  <div class="table-responsive">
+    <div class="row storage-table-header">
+      <div class="col-xs-10">
+        <h2>Files</h2>
+      </div>
+      <div class="col-xs-2">
+        <button type="button" class="storage-add-link" data-toggle="modal" data-target="#addModal">Add a Storage Item <span class="glyphicon glyphicon-plus" title="Add" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    <table class="table table-hover storage-files files">
+      <thead>
+        <tr>
+          <th class="col-xs-12 col-md-3">Name</th>
+          <th class="hidden-xs col-md-5">Filename</th>
+          <th class="hidden-xs col-md-3">Date Created</th>
+          <th class="hidden-xs col-md-1">Actions</th>
+        </tr>
+      </thead>
+      <% @users_storage.where(bookmark: false).order(created_at: :desc).each do |storage| %>
+      <tbody>
+        <tr class="file-rows" data-href="<% unless storage.bookmark %>/assets/storage/<% end %><%= storage.link_url %>">
+          <td><%= storage.name %></td>
+          <td><%= storage.link_url %></td>
+          <td><%= storage.created_at.strftime("%a %b %e, %Y - %l:%M %p") %></td>
+          <td class="file-actions">
+            <a class="storage-rename-link" data-toggle="modal" data-target="#renameModal" data-id="<%= storage.id %>" data-name="<%= storage.name %>"><span class="glyphicon glyphicon-pencil" title="Rename" aria-hidden="true"></span></a>
+            <a href="/storage/delete/<%= storage.id %>"><span class="glyphicon glyphicon-trash" title="Delete" aria-hidden="true"></span></a>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
   <% end %>
 </div>
-
-<!-- <p>Storage History</p>
-<% @users_storage.each do |storage| %>
-  <%= storage.name %> <br>
-  <a href="<% unless storage.bookmark %>/assets/storage/<% end %><%= storage.link_url %>">
-    <%= storage.link_url %>
-  </a> <br>
-<% end %> -->

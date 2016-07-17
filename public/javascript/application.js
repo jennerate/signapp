@@ -373,6 +373,10 @@ $(document).ready(function() {
         location.reload();
       }
     });
+    
+  $(document).on('click', '#addModal-submit', function() {
+    event.preventDefault();
+    $('#addModal form').submit();
   });
 
 });
