@@ -44,6 +44,7 @@ div.logo img {
 nav {
   z-index: 10;
   margin-bottom: 0px !important;
+  position: fixed;
 }
 
 .navbar-brand img {
