@@ -195,10 +195,11 @@ post '/user' do
     name: params[:name],
     username: params[:username],
     email: params[:email],
-    photo: params[:photo],
     description: params[:description]
   ) 
   @user.password = params[:password]
+  filename = upload_file(params[:file], 'profile_pic')
+  @user.photo = filename
   @user.save
   if @user.errors.empty?
     session[:flash] = "Thanks for registering!"
