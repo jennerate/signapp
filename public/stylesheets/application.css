@@ -1,3 +1,6 @@
+* {
+  font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
+}
 body {
   height: 100vh;
 }
@@ -25,8 +28,33 @@ body {
   display: none;
 }
 
+div.logo {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  text-align: center;
+}
 
-.storage-add-link {
+div.logo img {
+  max-height: 200px;
+  max-width: 200px;
+  display: block;
+  margin: auto;
+}
+
+nav {
+  z-index: 10;
+  margin-bottom: 0px !important;
+}
+
+.navbar-brand img {
+  position: relative;
+  float: left;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.align-right {
+  float: right;
 }
 
 .storage-files {

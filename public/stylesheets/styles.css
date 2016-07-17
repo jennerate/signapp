@@ -43,6 +43,10 @@ h3 {
     box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
 }
 
+.signup-form input {
+  margin-top: 5px;
+}
+
 .group { 
     position: relative; 
     margin-bottom: 45px; 
@@ -263,11 +267,12 @@ footer img:hover { opacity: .83; }
 footer img:focus , footer a:focus { outline: none; }
 
 .form-login {
-  padding-top: 10em;
+  /*padding-top: 10em;*/
  /* background: #ffffff !important;*/
-  margin-left: 40em;
+ /* margin-left: 40em;
   margin-right: 40em;
-
+  border: 1px solid lightgrey;*/
+  margin-top: 100px;
 
 }
 
