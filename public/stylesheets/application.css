@@ -25,6 +25,14 @@ body {
   display: none;
 }
 
+.storage-files {
+  font-size: 18px;
+}
+
+.storage-files tbody tr {
+  cursor: pointer;
+}
+
 #submit-container {
   float: right;
   margin-top: 50px;

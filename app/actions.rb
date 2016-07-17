@@ -248,3 +248,13 @@ get '/storage/all' do
   erb :'storage/all'
 end
 
+get '/storage/delete/:id' do
+  current_user.storages.find(params[:id]).destroy
+  redirect '/storage/all'
+end
+
+post '/storage/rename' do
+  storage_file = current_user.storages.find(params[:file_id])
+  storage_file.name = params[:name]
+  storage_file.save
+end
