@@ -88,8 +88,9 @@ h2.home-msg {
   margin-top: 10em;
   position: absolute;
   z-index: 100;
-  top: 10px;
+  /*top: 10px;*/
   right: 20px;
+  bottom: 0px;
   object-position: center;
   color: #fff;
   line-height: .2;
@@ -113,8 +114,17 @@ div#navigation {
   padding: 5px;
 }
 
+#navigation .align-right {
+  float: right;
+}
+
 #navigation a {
   text-decoration: none;
+  float: left;
+}
+
+#navigation img {
+  float: left;
 }
 
 a {
