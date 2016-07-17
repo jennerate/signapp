@@ -38,7 +38,7 @@ helpers do
     sleep 2
     
     errors = @driver.find_elements(:css, 'dd.error')
-    errors.each do |error|
+    errors.reverse.each do |error|
       @errors << error.text
     end
 
@@ -135,7 +135,7 @@ end
 
 get '/accounts/github/new' do
   @username = "SignAppTestDummy54321"
-  @email = "signappdummy54321@gmail.com"
+  @email = "signappdummy654321@gmail.com"
   @github_password = random_pass_generator
   @errors = Array.new
 
@@ -148,7 +148,7 @@ end
 
 get '/accounts/codeschool/new' do
   @username = "SignAppTestDummy54321"
-  @email = "signappdummy54321@gmail.com"
+  @email = "signappdummy654321@gmail.com"
   @codeschool_password = random_pass_generator
   @errors = Array.new
 
@@ -161,7 +161,7 @@ end
 
 get '/accounts/codecademy/new' do
   @username = "SignAppTestDummy54321"
-  @email = "signappdummy54321@gmail.com"
+  @email = "signappdummy654321@gmail.com"
   @codecademy_password = random_pass_generator
   @errors = Array.new
 
