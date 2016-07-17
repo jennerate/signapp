@@ -2,14 +2,13 @@
   <span id="signup-form-header">Create Account</span>
 </hgroup>
 
-<!-- 
 <% if @user.errors.any? %>
   <div>
     <% @user.errors.full_messages.each do |error_message| %>
     <div class="bg-danger"><%= error_message %></div>
     <% end %>
   </div>
-<% end %> -->
+<% end %> 
 
 <form action="/user" method="POST" class="signup-form" enctype="multipart/form-data">
  <div class="group">
@@ -38,8 +37,13 @@
   </div>
 
   <div class="group">
+<<<<<<< HEAD
     <input type="file" name="file" onchange="previewFile()"><br>
     <img src="" height="100">
+=======
+    <input type="file" onchange="previewFile()"><br>
+    <img src="" width="40" height="300">
+>>>>>>> downloads_template
   </div>
 
   <button class="button buttonBlue">Sign Up
