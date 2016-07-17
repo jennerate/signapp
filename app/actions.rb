@@ -11,15 +11,16 @@ helpers do
   end
 
     def upload_file(upload_file, file_type = 'profile_pic')
-    @filename = Time.now.to_i.to_s + "_" + params[:file][:filename].gsub(/\s+/, '-')
-    file = params[:file][:tempfile]
+      return nil unless params[:file] 
+      @filename = Time.now.to_i.to_s + "_" + params[:file][:filename].gsub(/\s+/, '-')
+      file = params[:file][:tempfile]
 
-    file_path = file_type == 'profile_pic' ? PATH_TO_PROFILE_PICS : PATH_TO_STORAGE
+      file_path = file_type == 'profile_pic' ? PATH_TO_PROFILE_PICS : PATH_TO_STORAGE
 
-    File.open("#{file_path + @filename}", 'wb') do |f|
-      f.write(file.read)
-    end
-    @filename 
+      File.open("#{file_path + @filename}", 'wb') do |f|
+        f.write(file.read)
+      end
+      @filename 
   end
 
   def random_pass_generator
@@ -175,9 +176,13 @@ end
 post '/session' do
   @user = User.find_by(username: params[:username])
   if @user && @user.password == params[:password]
+    session[:flash] = "Welcome back #{@user.name}"
     session[:user] = @user.id
+    redirect '/'
+  else 
+    session[:flash] = "Hmm, looks like you have an error. Try again!"
+    redirect '/session/new'
   end
-  redirect '/'
 end
 
 get '/session/delete' do
@@ -202,7 +207,7 @@ post '/user' do
   @user.photo = filename
   @user.save
   if @user.errors.empty?
-    session[:flash] = "Thanks for registering!"
+    session[:flash] = "Welcome!"
     redirect '/'
   else 
     erb :'/user/new'

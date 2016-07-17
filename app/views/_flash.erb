@@ -1,4 +1,4 @@
 <% if session[:flash] %>
-  <%= session[:flash] %>
+  <div class="alert-fixed" role="alert"><%= session[:flash] %></div>
   <% session.delete(:flash) %>
 <% end %>
