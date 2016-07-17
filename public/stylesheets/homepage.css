@@ -76,6 +76,10 @@ div#navigation {
   padding: 5px;
 }
 
+#navigation a {
+  text-decoration: none;
+}
+
 a {
   color: #000000;
   font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
