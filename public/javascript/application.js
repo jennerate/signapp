@@ -21,10 +21,16 @@ $(document).ready(function() {
           if (data.errors.length == 0) {
             $('#github-status').html("<h1>Success!</h1><p>Password: " + data.github_password + "</p>");
           } else {
-            $('#github-status').html('');
+            $('#github-status').html('<form class="website-status-form">');
             for (i=0; i < data.errors.length; i++) {
-              $('#github-status').append("<p>" + data.errors[i]);
+              if (data.errors[i].toLowerCase().indexOf('username') > -1) {
+                $('#github-status').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
+              }
+              if (data.errors[i].toLowerCase().indexOf('email') > -1) {
+                $('#github-status').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
+              }
             }
+            $('#github-status').append('</form>');
           }
         }
       });
@@ -41,10 +47,16 @@ $(document).ready(function() {
             "<h1>Success!</h1><p>Password: " + data.codeschool_password + "</p>"
             );
           } else {
-            $('#codeschool-status').html('');
+            $('#codeschool-status').html('<form class="website-status-form">');
             for (i=0; i < data.errors.length; i++) {
-              $('#codeschool-status').append("<p>" + data.errors[i]);
+              if (data.errors[i].toLowerCase().indexOf('username') > -1) {
+                $('#codeschool-status').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
+              }
+              if (data.errors[i].toLowerCase().indexOf('email') > -1) {
+                $('#codeschool-status').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
+              }
             }
+            $('#codeschool-status').append('</form>');
           }
         }
       });
@@ -61,10 +73,16 @@ $(document).ready(function() {
             "<h1>Success!</h1><p>Password: " + data.codecademy_password + "</p>"
             );
           } else {
-            $('#codecademy-status').html('');
+            $('#codecademy-status').html('<form class="website-status-form">');
             for (i=0; i < data.errors.length; i++) {
-              $('#codecademy-status').append("<p>" + data.errors[i]);
+              if (data.errors[i].toLowerCase().indexOf('username') > -1) {
+                $('#codecademy-status').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
+              }
+              if (data.errors[i].toLowerCase().indexOf('email') > -1) {
+                $('#codecademy-status').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
+              }
             }
+            $('#codecademy-status').append('</form>');
           }
         }
       });
