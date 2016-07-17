@@ -1,8 +1,15 @@
-<h1>Profile</h1>
 
-<form action="/save_image" method="POST">
-  <textarea rows="4" cols="52" name="description" placeholder="Write description here"></textarea>
-  <input type="file" onchange="previewFile()"><br>
-  <img width="430" height="300" src=""> <br>
-  <br><button>Submit</button>
-</form>
+<main  class="profile-page">
+  <div>
+  <h1>Profile</h1>
+  </div>
+  <img src="<%= current_user.photo %>" alt="" class="img-thumbnail"/>
+  <div>
+  <h1>Name: <%= current_user.name %></h1>
+  <h3>Username: <%= current_user.username %></h3>
+  <h3>Email: <%= current_user.email %></h3>
+  <h2> Description </h2>
+  <h3><%= current_user.description %></h3>
+  </div>
+</main>
+
