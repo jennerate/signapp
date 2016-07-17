@@ -10,6 +10,17 @@ body {
   color: green;
 }
 
+.faded {
+  background-color: #FFF;
+  opacity: 0.2;
+}
+
+#github-status, #codeschool-status, #codecademy-status {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+}
+
 .hidden {
   display: none;
 }
@@ -36,10 +47,10 @@ body {
   flex-wrap: wrap;
   min-height: 305px;
   cursor: pointer;
-  background-color: #00cc99;
+  background-color: #00a8a4;
 }
 
-.faded {
-  background-color: #FFF;
-  opacity: 0.2;
+.website-status-form {
+  margin-top: 20px;
+  position: relative;
 }
