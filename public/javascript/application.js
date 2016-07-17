@@ -10,82 +10,206 @@ $(document).ready(function() {
 
   $(".mass-signup-submit").click(function() {
     event.preventDefault();
-
+    $(this).attr('disabled', true);
     if ($("#github-signup-indicator").val() == 'true') {
-      $('#github-status').html("<img src='/assets/images/ajax-loader.gif' />");
+      $('#github-status').html("<img src='/assets/images/ajax-loader.gif' /><p>Please wait while we register your account...</p>");
       $.ajax({
-        method: "GET",
+        method: "POST",
         url: "http://localhost:3000/accounts/github/new",
+        data: $('#github-resubmit-form').serialize(),
         success: function(data) {
           console.log(data)
           if (data.errors.length == 0) {
-            $('#github-status').html("<h1>Success!</h1><p>Password: " + data.github_password + "</p>");
+            $('#github-status').html('<h1>Success!</h1>');
+            $('#github-status').append('<div id="github-password-used" class="hidden"></div>');
+            $('#github-password-used').append('<p>Password: ' + data.github_password + '</p>');
+            $('#github-status').append('<button id="github-password-button" type="button">Show Password</button>');
           } else {
-            $('#github-status').html('<form class="website-status-form">');
+            $('#github-status').html('');
+            $('#github-status').append('<form id="github-resubmit-form" class="website-status-form">');
             for (i=0; i < data.errors.length; i++) {
               if (data.errors[i].toLowerCase().indexOf('username') > -1) {
-                $('#github-status').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
+                $('#github-resubmit-form').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
               }
               if (data.errors[i].toLowerCase().indexOf('email') > -1) {
-                $('#github-status').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
+                $('#github-resubmit-form').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
               }
             }
-            $('#github-status').append('</form>');
+            $('#github-resubmit-form').append('<div class="col-xs-12"><button id="github-submit-button" class="btn btn-default">Submit</button></div>');
           }
         }
       });
     }
 
     if ($("#codeschool-signup-indicator").val() == 'true') {
-      $('#codeschool-status').html("<img src='/assets/images/ajax-loader.gif' />");
+      $('#codeschool-status').html("<img src='/assets/images/ajax-loader.gif' /><p>Please wait while we register your account...</p>");
       $.ajax({
-        method: "GET",
+        method: "POST",
         url: "http://localhost:3000/accounts/codeschool/new",
+        data: $('#codeschool-resubmit-form').serialize(),
         success: function(data) {
+          console.log(data)
           if (data.errors.length == 0) {
-            $('#codeschool-status').html(
-            "<h1>Success!</h1><p>Password: " + data.codeschool_password + "</p>"
-            );
+            $('#codeschool-status').html('<h1>Success!</h1>');
+            $('#codeschool-status').append('<div id="codeschool-password-used" class="hidden"></div>');
+            $('#codeschool-password-used').append('<p>Password: ' + data.codeschool_password + '</p>');
+            $('#codeschool-status').append('<button id="codeschool-password-button" type="button">Show Password</button>');
           } else {
-            $('#codeschool-status').html('<form class="website-status-form">');
+            $('#codeschool-status').html('');
+            $('#codeschool-status').append('<form id="codeschool-resubmit-form" class="website-status-form">');
             for (i=0; i < data.errors.length; i++) {
               if (data.errors[i].toLowerCase().indexOf('username') > -1) {
-                $('#codeschool-status').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
+                $('#codeschool-resubmit-form').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
               }
               if (data.errors[i].toLowerCase().indexOf('email') > -1) {
-                $('#codeschool-status').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
+                $('#codeschool-resubmit-form').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
               }
             }
-            $('#codeschool-status').append('</form>');
+            $('#codeschool-resubmit-form').append('<div class="col-xs-12"><button id="codeschool-submit-button" class="btn btn-default">Submit</button></div>');
           }
         }
       });
     }
 
     if ($("#codecademy-signup-indicator").val() == 'true') {
-      $('#codecademy-status').html("<img src='/assets/images/ajax-loader.gif' />");
+      $('#codecademy-status').html("<img src='/assets/images/ajax-loader.gif' /><p>Please wait while we register your account...</p>");
       $.ajax({
-        method: "GET",
+        method: "POST",
         url: "http://localhost:3000/accounts/codecademy/new",
+        data: $('#codecademy-resubmit-form').serialize(),
         success: function(data) {
+          console.log(data)
           if (data.errors.length == 0) {
-            $('#codecademy-status').html(
-            "<h1>Success!</h1><p>Password: " + data.codecademy_password + "</p>"
-            );
+            $('#codecademy-status').html('<h1>Success!</h1>');
+            $('#codecademy-status').append('<div id="codecademy-password-used" class="hidden"></div>');
+            $('#codecademy-password-used').append('<p>Password: ' + data.codecademy_password + '</p>');
+            $('#cdoecademy-status').append('<button id="codecademy-password-button" type="button">Show Password</button>');
           } else {
-            $('#codecademy-status').html('<form class="website-status-form">');
+            $('#codecademy-status').html('');
+            $('#codecademy-status').append('<form id="codecademy-resubmit-form" class="website-status-form">');
             for (i=0; i < data.errors.length; i++) {
               if (data.errors[i].toLowerCase().indexOf('username') > -1) {
-                $('#codecademy-status').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
+                $('#codecademy-resubmit-form').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
               }
               if (data.errors[i].toLowerCase().indexOf('email') > -1) {
-                $('#codecademy-status').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
+                $('#codecademy-resubmit-form').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
               }
             }
-            $('#codecademy-status').append('</form>');
+            $('#codecademy-resubmit-form').append('<div class="col-xs-12"><button id="codecademy-submit-button" class="btn btn-default">Submit</button></div></form>');
           }
         }
       });
     }
+  });
+
+  $(document).on("click", '#github-submit-button', function() {
+    event.preventDefault();
+    console.log($('#github-resubmit-form').serialize());
+    $.ajax({
+      method: "POST",
+      url: "http://localhost:3000/accounts/github/new",
+      data: $('#github-resubmit-form').serialize(),
+      success: function(data) {
+        console.log(data)
+        if (data.errors.length == 0) {
+          $('#github-status').html('<h1>Success!</h1>');
+          $('#github-status').append('<div id="github-password-used" class="hidden"></div>');
+          $('#github-password-used').append('<p>Password: ' + data.github_password + '</p>');
+          $('#github-status').append('<button id="github-password-button" type="button">Show Password</button>');
+        } else {
+          $('#github-status').html('');
+          $('#github-status').append('<form id="github-resubmit-form" class="website-status-form">');
+          for (i=0; i < data.errors.length; i++) {
+            if (data.errors[i].toLowerCase().indexOf('username') > -1) {
+              $('#github-resubmit-form').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
+            }
+            if (data.errors[i].toLowerCase().indexOf('email') > -1) {
+              $('#github-resubmit-form').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
+            }
+          }
+          $('#github-resubmit-form').append('<div class="col-xs-12"><button id="github-submit-button" class="btn btn-default">Submit</button></div>');
+        }
+      }
+    });
+    $('#github-status').html("<img src='/assets/images/ajax-loader.gif' />");
+  });
+
+  $(document).on("click", '#codeschool-submit-button', function() {
+    event.preventDefault();
+    console.log($('#codeschool-resubmit-form').serialize());
+    $.ajax({
+      method: "POST",
+      url: "http://localhost:3000/accounts/codeschool/new",
+      data: $('#codeschool-resubmit-form').serialize(),
+      success: function(data) {
+        console.log(data)
+        if (data.errors.length == 0) {
+          $('#codeschool-status').html('<h1>Success!</h1>');
+          $('#codeschool-status').append('<div id="codeschool-password-used" class="hidden"></div>');
+          $('#codeschool-password-used').append('<p>Password: ' + data.codeschool_password + '</p>');
+          $('#codeschool-status').append('<button id="codeschool-password-button" type="button">Show Password</button>');
+        } else {
+          $('#codeschool-status').html('');
+          $('#codeschool-status').append('<form id="codeschool-resubmit-form" class="website-status-form">');
+          for (i=0; i < data.errors.length; i++) {
+            if (data.errors[i].toLowerCase().indexOf('username') > -1) {
+              $('#codeschool-resubmit-form').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
+            }
+            if (data.errors[i].toLowerCase().indexOf('email') > -1) {
+              $('#codeschool-resubmit-form').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
+            }
+          }
+          $('#codeschool-resubmit-form').append('<div class="col-xs-12"><button id="codeschool-submit-button" class="btn btn-default">Submit</button></div>');
+        }
+      }
+    });
+    $('#codeschool-status').html("<img src='/assets/images/ajax-loader.gif' />");
+  });
+
+  $(document).on("click", '#codecademy-submit-button', function() {
+    event.preventDefault();
+    console.log($('#codecademy-resubmit-form').serialize());
+    $.ajax({
+      method: "POST",
+      url: "http://localhost:3000/accounts/codecademy/new",
+      data: $('#codecademy-resubmit-form').serialize(),
+      success: function(data) {
+        console.log(data)
+        if (data.errors.length == 0) {
+          $('#codecademy-status').html('<h1>Success!</h1>');
+          $('#codecademy-status').append('<div id="codecademy-password-used" class="hidden"></div>');
+          $('#codecademy-password-used').append('<p>Password: ' + data.codecademy_password + '</p>');
+          $('#cdoecademy-status').append('<button id="codecademy-password-button" type="button">Show Password</button>');
+        } else {
+          $('#codecademy-status').html('');
+          $('#codecademy-status').append('<form id="codecademy-resubmit-form" class="website-status-form">');
+          for (i=0; i < data.errors.length; i++) {
+            if (data.errors[i].toLowerCase().indexOf('username') > -1) {
+              $('#codecademy-resubmit-form').append('<div class="group"><label>Username <span class="text-danger">(was already taken)</span></label><input type="text" name="username" value="" placeholder="Please use a different username."><span class="highlight"></span><span class="bar"></span></div>');
+            }
+            if (data.errors[i].toLowerCase().indexOf('email') > -1) {
+              $('#codecademy-resubmit-form').append('<div class="group"><label>Email <span class="text-danger">(was already taken)</span></label><input type="text" name="email" value="" placeholder="Please use a different email."><span class="highlight"></span><span class="bar"></span></div>');
+            }
+          }
+          $('#codecademy-resubmit-form').append('<div class="col-xs-12"><button id="codecademy-submit-button" class="btn btn-default">Submit</button></div>');
+        }
+      }
+    });
+    $('#codecademy-status').html("<img src='/assets/images/ajax-loader.gif' />");
+  });
+
+  $(document).on("click", '#github-password-button', function() {
+    $('#github-password-used').toggleClass('hidden');
+    $(this).text("Hide Password");
+  });
+
+  $(document).on("click", '#codeschool-password-button', function() {
+    $('#codeschool-password-used').toggleClass('hidden');
+    $(this).text("Hide Password");
+  });
+
+  $(document).on("click", '#codecademy-password-button', function() {
+    $('#codecademy-password-used').toggleClass('hidden');
+    $(this).text("Hide Password");
   });
 });
