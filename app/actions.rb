@@ -134,8 +134,8 @@ post '/accounts/signup' do
 end
 
 post '/accounts/github/new' do
-  @username = params[:username] ? params[:username] : "SignAppTestDummy54321"
-  @email = params[:email] ? params[:email] : "signappdummy654321@gmail.com"
+  @username = params[:username] ? params[:username] : current_user.username
+  @email = params[:email] ? params[:email] : current_user.email
   @github_password = random_pass_generator
   @errors = Array.new
 
@@ -143,12 +143,12 @@ post '/accounts/github/new' do
   @github_status = github_signup(@github_password)
   @driver.quit
   content_type :json
-  {github_status: @github_status, git_email: @email, git_username: @username, github_password: @github_password, errors: @errors}.to_json
+  {github_status: @github_status, github_email: @email, github_username: @username, github_password: @github_password, errors: @errors}.to_json
 end
 
 post '/accounts/codeschool/new' do
-  @username = params[:username] ? params[:username] : "SignAppTestDummy54321"
-  @email = params[:email] ? params[:email] : "signappdummy654321@gmail.com"
+  @username = params[:username] ? params[:username] : current_user.username
+  @email = params[:email] ? params[:email] : current_user.email
   @codeschool_password = random_pass_generator
   @errors = Array.new
 
@@ -160,8 +160,8 @@ post '/accounts/codeschool/new' do
 end
 
 post '/accounts/codecademy/new' do
-  @username = params[:username] ? params[:username] : "SignAppTestDummy54321"
-  @email = params[:email] ? params[:email] : "signappdummy654321@gmail.com"
+  @username = params[:username] ? params[:username] : current_user.username
+  @email = params[:email] ? params[:email] : current_user.email
   @codecademy_password = random_pass_generator
   @errors = Array.new
 
