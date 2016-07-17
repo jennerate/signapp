@@ -6,6 +6,7 @@ body {
 
 .home {
   display: block;
+  font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
 }
 
 .home-wrapper {
@@ -14,14 +15,42 @@ body {
   height: 100%;
 }
 
-h1.homepage-msg {
+#homepage-msg h1, #homepage-link h1, #homepage-link a {
   color: #ffffff;
-  text-align: center;
+  font-size: 40px;
+  /*text-align: center;*/
 }
 
-h2.home-msg {
-  color: #ffffff;
-  text-align: center;
+#homepage-msg {
+  position: relative;
+  /*left: 200px;*/
+  /*top: 150px;*/
+  margin-top: 150px;
+  z-index: 10;
+}
+
+#homepage-link {
+  position: relative;
+  /*margin-bottom: 100px;*/
+  margin-top: 500px;
+  z-index: 10;
+}
+
+#homepage-link a {
+  text-decoration: none;
+}
+
+.homepage-join-button {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: black;
+  padding: 0px 10px;
+  font-size: 36px;
+}
+
+.homepage-join-button:hover {
+  background-color: lightgrey;
 }
 
 /*p.homepage-note {
@@ -121,9 +150,11 @@ div#navigation {
 #navigation a {
   text-decoration: none;
   float: left;
+  margin-right: 20px;
 }
 
 #navigation img {
+  height: 30px;
   float: left;
 }
 
