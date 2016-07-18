@@ -20,8 +20,9 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
         <li><a class="non-link" href="/user/profile"><%= current_user.name %></a></li>
-        <li><a href="/storage/all">Storage</a></li>
+        <li><a href="/accounts">Accounts</a></li>
         <li><a href="/downloads/new">Downloads</a></li>
+        <li><a href="/storage/all">Storage</a></li>
         <li><a href="/session/delete">Logout</a></li>
         <% else %>
         <li><a href="/user/new">Join</a></li>

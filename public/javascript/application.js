@@ -60,7 +60,7 @@ $(document).ready(function() {
             $('#codeschool-status').append('<div id="codeschool-username-used"></div>');
             $('#codeschool-username-used').append('<h3>Username</h3><p>' + data.codeschool_username + '</p>');
             $('#codeschool-status').append('<div id="codeschool-password-used" class="hidden"></div>');
-            $('#codeschool-password-used').append('<p>Password: ' + data.codeschool_password + '</p>');
+            $('#codeschool-password-used').append('<h3>Password </h3><p>' + data.codeschool_password + '</p>');
             $('#codeschool-status').append('<button id="codeschool-password-button" type="button">Show Password</button>');
           } else {
             $('#codeschool-status').html('');
@@ -94,7 +94,7 @@ $(document).ready(function() {
             $('#codecademy-status').append('<div id="codecademy-username-used"></div>');
             $('#codecademy-username-used').append('<h3>Username</h3><p>' + data.codecademy_username + '</p>');
             $('#codecademy-status').append('<div id="codecademy-password-used" class="hidden"></div>');
-            $('#codecademy-password-used').append('<p>Password: ' + data.codecademy_password + '</p>');
+            $('#codecademy-password-used').append('<h3>Password</h3><p>' + data.codecademy_password + '</p>');
             $('#codecademy-status').append('<button id="codecademy-password-button" type="button">Show Password</button>');
           } else {
             $('#codecademy-status').html('');
@@ -166,7 +166,7 @@ $(document).ready(function() {
           $('#codeschool-status').append('<div id="codeschool-username-used"></div>');
           $('#codeschool-username-used').append('<h3>Username</h3><p>' + data.codeschool_username + '</p>');
           $('#codeschool-status').append('<div id="codeschool-password-used" class="hidden"></div>');
-          $('#codeschool-password-used').append('<p>Password: ' + data.codeschool_password + '</p>');
+          $('#codeschool-password-used').append('<h3>Password</h3><p>' + data.codeschool_password + '</p>');
           $('#codeschool-status').append('<button id="codeschool-password-button" type="button">Show Password</button>');
         } else {
           $('#codeschool-status').html('');
@@ -202,7 +202,7 @@ $(document).ready(function() {
           $('#codecademy-status').append('<div id="codecademy-username-used"></div>');
           $('#codecademy-username-used').append('<h3>Username</h3><p>' + data.codecademy_username + '</p>');
           $('#codecademy-status').append('<div id="codecademy-password-used" class="hidden"></div>');
-          $('#codecademy-password-used').append('<p>Password: ' + data.codecademy_password + '</p>');
+          $('#codecademy-password-used').append('<h3>Password</h3><p> ' + data.codecademy_password + '</p>');
           $('#codecademy-status').append('<button id="codecademy-password-button" type="button">Show Password</button>');
         } else {
           $('#codecademy-status').html('');
