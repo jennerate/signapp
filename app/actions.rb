@@ -252,10 +252,6 @@ post '/save_information' do
   redirect '/storage/all'
 end
 
-get '/storage' do
-  erb :'storage/storage'
-end
-
 get '/storage/all' do
   @users_storage = current_user.storages.all
   erb :'storage/all'
