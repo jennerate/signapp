@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716170553) do
+ActiveRecord::Schema.define(version: 20160718045332) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "account_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
   create_table "storages", force: :cascade do |t|
