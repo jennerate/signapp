@@ -49,6 +49,10 @@ nav {
   font-weight: 700;
 }
 
+.navbar-brand {
+  font-size: 25px;
+}
+
 .navbar-brand img {
   position: relative;
   float: left;
@@ -62,6 +66,7 @@ nav {
 
 .profile-container {
   background-color: white;
+  margin-top: 120px;
 }
 
 .storage-files {
