@@ -52,7 +52,9 @@
         <h2>Bookmarks</h2>
       </div>
       <div class="col-xs-2">
-        <button type="button" class="storage-add-link" data-toggle="modal" data-target="#addModal">Add a Storage Item <span class="glyphicon glyphicon-plus" title="Add" aria-hidden="true"></span></button>
+        <button type="button" class="storage-add-link buttonBlue" data-toggle="modal" data-target="#addModal">
+          <span class="glyphicon glyphicon-plus" title="Add" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   <% unless @users_storage.where(bookmark: true).empty? %>
@@ -88,7 +90,9 @@
         <h2>Files</h2>
       </div>
       <div class="col-xs-2">
-        <button type="button" class="storage-add-link" data-toggle="modal" data-target="#addModal">Add a Storage Item <span class="glyphicon glyphicon-plus" title="Add" aria-hidden="true"></span></button>
+        <button type="button" class="storage-add-link buttonBlue" data-toggle="modal" data-target="#addModal">
+          <span class="glyphicon glyphicon-plus" title="Add" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   <% unless @users_storage.where(bookmark: false).empty? %>
