@@ -72,7 +72,7 @@
         <tr class="file-rows" data-href="<% unless storage.bookmark %>/assets/storage/<% end %><%= storage.link_url %>">
           <td><%= storage.name %></td>
           <td><%= storage.link_url %></td>
-          <td><%= storage.created_at.strftime("%a %b %e, %Y - %l:%M %p") %></td>
+          <td><%= storage.created_at.getlocal.strftime("%a %b %e, %Y - %l:%M %p") %></td>
           <td class="file-actions">
             <a class="storage-rename-link" data-toggle="modal" data-target="#renameModal" data-id="<%= storage.id %>" data-name="<%= storage.name %>"><span class="glyphicon glyphicon-pencil" title="Rename" aria-hidden="true"></span></a>
             <a href="/storage/delete/<%= storage.id %>"><span class="glyphicon glyphicon-trash" title="Delete" aria-hidden="true"></span></a>
@@ -110,7 +110,7 @@
         <tr class="file-rows" data-href="<% unless storage.bookmark %>/assets/storage/<% end %><%= storage.link_url %>">
           <td><%= storage.name %></td>
           <td><%= storage.link_url %></td>
-          <td><%= storage.created_at.strftime("%a %b %e, %Y - %l:%M %p") %></td>
+          <td><%= storage.created_at.getlocal.strftime("%a %b %e, %Y - %l:%M %p") %></td>
           <td class="file-actions">
             <a class="storage-rename-link" data-toggle="modal" data-target="#renameModal" data-id="<%= storage.id %>" data-name="<%= storage.name %>"><span class="glyphicon glyphicon-pencil" title="Rename" aria-hidden="true"></span></a>
             <a href="/storage/delete/<%= storage.id %>"><span class="glyphicon glyphicon-trash" title="Delete" aria-hidden="true"></span></a>
