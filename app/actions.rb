@@ -144,7 +144,7 @@ post '/accounts/github/new' do
   @github_status = github_signup(@github_password)
   @driver.quit
   if @errors.empty? 
-    current_user.accounts << Account.create(account_type: "github")
+    current_user.accounts << Account.create(account_type: "github", email: @email)
   end
   content_type :json
   {github_status: @github_status, github_email: @email, github_username: @username, github_password: @github_password, errors: @errors}.to_json
@@ -160,7 +160,7 @@ post '/accounts/codeschool/new' do
   @codeschool_status = codeschool_signup(@codeschool_password)
   @driver.quit
   if @errors.empty? 
-    current_user.accounts << Account.create(account_type: "codeschool")
+    current_user.accounts << Account.create(account_type: "codeschool", email: @email)
   end
   content_type :json
   {codeschool_status: @codeschool_status, codeschool_email: @email, codeschool_username: @username, codeschool_password: @codeschool_password, errors: @errors}.to_json
@@ -176,7 +176,7 @@ post '/accounts/codecademy/new' do
   @codecademy_status = codecademy_signup(@codecademy_password)
   @driver.quit
   if @errors.empty? 
-    current_user.accounts << Account.create(account_type: "codecademy")
+    current_user.accounts << Account.create(account_type: "codecademy", email: @email)
   end
   content_type :json
   {codecademy_status: @codecademy_status, codecademy_email: @email, codecademy_username: @username, codecademy_password: @codecademy_password, errors: @errors}.to_json

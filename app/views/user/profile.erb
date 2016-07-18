@@ -89,12 +89,12 @@
       <div class="profile-accounts">
         <div class="row">
           <div class="col-md-12 bio-accounts">
-              <div class='col-md-6'>
+              <div class='col-md-6 bio-accounts-header'>
                 <h2>ACCOUNTS</h2>
               </div>
               <div class='col-md-12'>
                 <div class="table-responsive">
-                  <table class="table">
+                  <table class="table table-striped">
                     <thead>
                       <tr>
                         <th class="col-xs-12 col-md-3">Account</th>
@@ -105,7 +105,7 @@
                     <tbody>
                       <tr>
                         <td><%= account.account_type %></td>
-                        <td align="right"><%= account.account_type %></td>
+                        <td align="right"><%= account.email %></td>
                       </tr>
                   <% end %>
                     </tbody>

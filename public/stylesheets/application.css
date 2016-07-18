@@ -64,6 +64,9 @@ nav {
   float: right;
 }
 
+.bio-accounts table {
+  font-size: 18px;
+}
 .bio-accounts table th:last-child {
   text-align: right;
 }
@@ -75,7 +78,7 @@ nav {
   padding-bottom: 20px;
 }
 
-.bio-desc div:first-child, .bio-accounts div:first-child {
+.bio-desc div:first-child, .bio-accounts-header {
   margin-top: -40px;
   margin-left: 10px;
   background-color: lightgrey;
