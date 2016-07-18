@@ -222,14 +222,19 @@ post '/user' do
   filename = upload_file(params[:file], 'profile_pic')
   @user.photo = filename
   @user.save
-  if @user.errors.empty?
-    session[:flash] = "Welcome!"
+  if @user.errors.empty? && logged_in? == false
+    session[:flash] = "Welcome to SignApp, #{@user.username}!"
     session[:user] = @user.id
     redirect '/accounts'
+  elsif 
+    logged_in? == true
+      session[:flash] = "You cannot sign up if you are currently logged in."
+      redirect '/user/new'
   else 
-    erb :'/user/new'
+    redirect '/user/new'
   end
 end
+
 
 get '/user/new' do
   @user = User.new
