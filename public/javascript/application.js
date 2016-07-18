@@ -278,4 +278,15 @@ $(document).ready(function() {
     $('#addModal form').submit();
   });
 
+  $(document).on('click', '#descriptionModal-submit', function() {
+    event.preventDefault();
+    $('#descriptionModal form').submit();
+  });
+
+    $(document).on('click', '#photoModal-submit', function() {
+    event.preventDefault();
+    $('#photoModal form').submit();
+  });
+
+
 });

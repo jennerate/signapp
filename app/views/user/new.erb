@@ -14,7 +14,7 @@
 </div>
 
 <div>
-<form action="/user" method="POST" class="signup-form form-login">
+<form action="/user" method="POST" class="signup-form form-login" enctype="multipart/form-data">
  <div class="group">
     <input type="text" name="name" value="<%= @user.name %>" placeholder="name">
       <span class="highlight"></span>

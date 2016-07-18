@@ -251,6 +251,21 @@ get '/user/profile' do
   erb :'user/profile'
 end 
 
+post '/user/profile/edit' do
+  unless params[:description].nil? || params[:description].empty?
+    current_user.description = params[:description]
+    current_user.save
+  end
+
+  unless params[:file].nil? 
+    filename = upload_file(params[:file], 'profile_pic')
+    current_user.photo = filename
+    current_user.save 
+  end
+  redirect '/user/profile'
+end
+
+
 post '/save_information' do
   filename = params[:file].nil? ? nil : upload_file(params[:file], 'storage')
   if filename 
