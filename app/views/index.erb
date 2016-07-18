@@ -4,9 +4,15 @@
             <h1>Taking all day and night to onboard?</h1>
         </div>
         <!-- col-md-offset-6 col-md-5 -->
+
         <div class="col-xs-12" id="homepage-link">
-            <h1>SignApp to get productive! <a href="/user/new"><span class="homepage-join-button">Join</span></a></h1>
+            <h1>SignApp to get productive!<a href="/user/new">
+                <% if logged_in? == false %>
+                    <span class="homepage-join-button">Join</span>
+                <% end %>
+            </a></h1>   
         </div>
+  
         <div class="home-wrapper js-home-desktop-wrapper">
 
         <section class="side-left js-side-left">
