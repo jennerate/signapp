@@ -95,7 +95,7 @@ $(document).ready(function() {
             $('#codecademy-username-used').append('<h3>Username</h3><p>' + data.codecademy_username + '</p>');
             $('#codecademy-status').append('<div id="codecademy-password-used" class="hidden"></div>');
             $('#codecademy-password-used').append('<p>Password: ' + data.codecademy_password + '</p>');
-            $('#cdoecademy-status').append('<button id="codecademy-password-button" type="button">Show Password</button>');
+            $('#codecademy-status').append('<button id="codecademy-password-button" type="button">Show Password</button>');
           } else {
             $('#codecademy-status').html('');
             $('#codecademy-status').append('<form id="codecademy-resubmit-form" class="website-status-form">');
