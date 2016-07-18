@@ -148,6 +148,11 @@ nav {
   float: right;
   margin-top: 50px;
   margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+#submit-container a {
+  margin-right: 20px;
 }
 
 .websites-container {

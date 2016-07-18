@@ -104,7 +104,7 @@
                   <% current_user.accounts.each do |account| %>
                     <tbody>
                       <tr>
-                        <td><%= account.account_type %></td>
+                        <td><a href="http://www.<%= account.account_type %>.com" target="_blank"><%= account.account_type %></a></td>
                         <td align="right"><%= account.email %></td>
                       </tr>
                   <% end %>

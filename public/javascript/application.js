@@ -26,7 +26,7 @@ $(document).ready(function() {
             $('#github-status').append('<div id="github-username-used"></div>');
             $('#github-username-used').append('<h3>Username</h3><p>' + data.github_username + '</p>');
             $('#github-status').append('<div id="github-password-used" class="hidden"></div>');
-            $('#github-password-used').append('<p>Password: ' + data.github_password + '</p>');
+            $('#github-password-used').append('<h3>Password</h3><p>' + data.github_password + '</p>');
             $('#github-status').append('<button id="github-password-button" type="button">Show Password</button>');
           } else {
             $('#github-status').html('');
@@ -283,7 +283,7 @@ $(document).ready(function() {
     $('#descriptionModal form').submit();
   });
 
-    $(document).on('click', '#photoModal-submit', function() {
+  $(document).on('click', '#photoModal-submit', function() {
     event.preventDefault();
     $('#photoModal form').submit();
   });
