@@ -1,6 +1,7 @@
 * {
   font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
 }
+
 body {
   height: 100vh;
 }
@@ -45,6 +46,7 @@ nav {
   z-index: 10;
   margin-bottom: 0px !important;
   position: fixed;
+  font-weight: 700;
 }
 
 .navbar-brand img {
@@ -56,6 +58,10 @@ nav {
 
 .align-right {
   float: right;
+}
+
+.profile-container {
+  background-color: white;
 }
 
 .storage-files {

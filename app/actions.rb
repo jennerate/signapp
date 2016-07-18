@@ -11,7 +11,7 @@ helpers do
   end
 
     def upload_file(upload_file, file_type = 'profile_pic')
-      return nil unless params[:file] 
+      return nil unless params[:file] && !params[:file].empty? 
       @filename = Time.now.to_i.to_s + "_" + params[:file][:filename].gsub(/\s+/, '-')
       file = params[:file][:tempfile]
 
@@ -143,6 +143,9 @@ post '/accounts/github/new' do
   @driver = Selenium::WebDriver.for :chrome
   @github_status = github_signup(@github_password)
   @driver.quit
+  if @errors.empty? 
+    current_user.accounts << Account.create(account_type: "github")
+  end
   content_type :json
   {github_status: @github_status, github_email: @email, github_username: @username, github_password: @github_password, errors: @errors}.to_json
 end
@@ -156,6 +159,9 @@ post '/accounts/codeschool/new' do
   @driver = Selenium::WebDriver.for :chrome
   @codeschool_status = codeschool_signup(@codeschool_password)
   @driver.quit
+  if @errors.empty? 
+    current_user.accounts << Account.create(account_type: "codeschool")
+  end
   content_type :json
   {codeschool_status: @codeschool_status, codeschool_email: @email, codeschool_username: @username, codeschool_password: @codeschool_password, errors: @errors}.to_json
 end
@@ -169,6 +175,9 @@ post '/accounts/codecademy/new' do
   @driver = Selenium::WebDriver.for :chrome
   @codecademy_status = codecademy_signup(@codecademy_password)
   @driver.quit
+  if @errors.empty? 
+    current_user.accounts << Account.create(account_type: "codecademy")
+  end
   content_type :json
   {codecademy_status: @codecademy_status, codecademy_email: @email, codecademy_username: @username, codecademy_password: @codecademy_password, errors: @errors}.to_json
 end

@@ -1,4 +1,22 @@
-<main  class="profile-page">
+<div class="container profile-container">
+  <div class="row">
+    <div class="col-md-5">
+      <img src="/assets/profile_pics/<%= current_user.photo.nil? || current_user.photo.empty? ? "default_profile.png" : current_user.photo %>" alt="" class="img-responsive img-thumbnail"/>
+    </div>
+    <div class="col-md-7">
+      <h1>Name: <%= current_user.name %></h1>
+      <h1>Username: <%= current_user.username %></h1>
+      <h1>Email: <%= current_user.email %></h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      Description:
+    </div>
+</div>
+
+<!-- <main  class="profile-page">
   <div>
   <h1>Profile</h1>
   </div>
@@ -10,5 +28,5 @@
   <h2> Description </h2>
   <h3><%= current_user.description %></h3>
   </div>
-</main>
+</main> -->
 
