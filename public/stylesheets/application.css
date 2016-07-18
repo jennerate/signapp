@@ -64,17 +64,29 @@ nav {
   float: right;
 }
 
-.profile-bio, .profile-desc {
+.bio-accounts table th:last-child {
+  text-align: right;
+}
+
+.profile-bio, .profile-desc, .profile-accounts {
   margin-top: 70px;
   background-color: white;
   border: 2px solid lightgrey;
   padding-bottom: 20px;
 }
 
-.bio-desc div:first-child {
+.bio-desc div:first-child, .bio-accounts div:first-child {
   margin-top: -40px;
   margin-left: 10px;
   background-color: lightgrey;
+}
+
+.bio-desc div:last-child, .bio-accounts div:last-child {
+  margin-top: 20px;
+}
+
+.bio-desc .pointer-class {
+  cursor: pointer;
 }
 
 .profile-bio img {
@@ -82,6 +94,12 @@ nav {
   margin-top: -70px;
   background-color: white;
   border: 2px solid lightgrey;
+}
+
+.profile-bio .photo-modify {
+  position: absolute;
+  right: -10px;
+  bottom: 0px;
 }
 
 /*.profile-container {
