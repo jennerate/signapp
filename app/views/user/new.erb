@@ -11,14 +11,14 @@
     <img class="img-responsive" src="https://www.polymer-project.org/images/logos/p-logo.svg">
     <h1>SignApp</h1>
   </div>
+  <div class="bottom-up row">
+    <h6>Information from this form will be used in creating other accounts!</h6>
+  </div>
 </div>
 
 <div>
 <form action="/user" method="POST" class="signup-form form-login" enctype="multipart/form-data">
  <div class="group">
-  <div class="bottom-up">
-    <h6>Information from this form will be used in creating other accounts!</h6>
-  </div>
   <input type="text" name="name" value="<%= @user.name %>" placeholder="name">
     <span class="highlight"></span>
     <span class="bar"></span>
