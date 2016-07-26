@@ -1,10 +1,6 @@
-Sinatra
+SignApp
 =============
 
-Brought to you by Lighthouse Labs
+An application that helps you onboard when starting at Lighthouse Labs by signing users up for all the required accounts as well as offering all required applications as downloads.
 
-## Getting Started
 
-1. `bundle install`
-2. `shotgun -p 3000 -o 0.0.0.0`
-3. Visit `http://localhost:3000/` in your browser
