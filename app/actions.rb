@@ -191,8 +191,7 @@ post '/session' do
   elsif
     @user = User.find_by(username: params[:username])
     if @user && @user.password != params[:password]
-      session[:flash] = "Incorrect password! Try again."
-      session[:user] = @user.id
+      session[:flash] = "Incorrect username or password! Try again."
       redirect '/session/new'
     end
   else
